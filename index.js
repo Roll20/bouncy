@@ -106,6 +106,11 @@ function makeBounce (bs, client, req, parser) {
             }
         });
         
+        client.on('error', function (err) {
+            req.destroy();
+            stream.destroy();
+        });
+        
         return stream;
     };
     
