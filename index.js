@@ -72,6 +72,12 @@ function makeBounce (bs, client, req, parser) {
             opts = parseArgs(arguments);
             stream = opts.stream;
         }
+        
+        if (bs.chunks != null) {
+            req.destroy();
+            stream.destroy();
+        }
+        
         if (!opts) opts = {};
         
         if (!opts.headers) opts.headers = {};
